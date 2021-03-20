@@ -12,12 +12,37 @@ const question1 = {
 
 console.log  (question1.correctAnswer())
 
-const constructQuizContentDiv = () => {
-  console.log("it works");
+const constructAnswerButtons = () => {
+  const answerButton = document.createElement("button");
+  console.log (answerButton)
+  return answerButton;
 }
 
-const populateQ1Information = () => {
+const constructQuizContentDiv = () => {
   console.log("it works");
+  // construct div
+  const quizContentDiv = document.createElement("div");
+  // add a class
+  quizContentDiv.setAttribute("class", "quizContentt");
+  // append it under the quiz content div
+  document.getElementById("container").appendChild(quizContentDiv);
+  // add h1
+  const quizContentH1 = document.createElement("h1");
+  //append under content div
+  quizContentDiv.appendChild(quizContentH1);
+  quizContentH1.textContent = question1.questionText ;
+  // add buttons - why does this not work?
+  //const answerButtons = question1.answerChoices.every(constructAnswerButtons);
+  
+  //console.log (answerButton);
+  // add ids
+
+  //append under content div
+  //quizContentDiv.appendChild(answerButtons);
+
+  // return entire div
+  return quizContentH1;
+  return quizContentDiv;
 }
 
 const destructStartScreenContentDiv = () => {
@@ -31,18 +56,11 @@ const startTimer = () => {
 
 function startQuiz () {
   // create quizContent div
-  const quizContentDiv = constructQuizContentDiv ();
-  // fill div with question 1 info
-  const q1Information = populateQ1Information ();
+  const quizContentDivElement = constructQuizContentDiv ();
   //destruct startScreenContent div
   const startScreenContentDiv = destructStartScreenContentDiv ();
   // start timer
   const timer = startTimer ();
-}
-
-function q1ValuePopulator () {
-  // populate new layout with question one info
-
 }
 
 function q1AnswerValidator () {
