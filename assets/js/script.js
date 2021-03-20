@@ -1,17 +1,23 @@
-let timeLeft = 0;
-let points = 0;
+let timeLeft = 91;
+let score = 0;
+const bodyElement = document.body ;
 
 const question1 = {
-  questionText = "This is the question";
-  answerChoices = ["",""];
-  correctAnswer =  answerChoices[3];
-}
+  questionText: "This is the question",
+  answerChoices: ["1", "2", "3", "4"],
+  correctAnswer: function () {
+    return this.answerChoices[3]
+  }
+};
+
+console.log  (question1.correctAnswer())
 
 document.getElementById("startButton").addEventListener("click", startQuiz);
 
 function startQuiz () {
   console.log("Hey")
-  // change layout of html to include questions
+  // remove id startContainer layout of html to include questions
+  
 
   // start timer
 }

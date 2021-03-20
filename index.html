@@ -8,16 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
-  <header>
-    <a href="./highscores.html"> Highscores </a>
-    <h1>
-      Timer: <span> 0 </span>
-    </h1>
-  </header>
-
   <body>
+    <header>
+      <a href="./highscores.html"> Highscores </a>
+      <h1>
+        Score: <span id="score"> 0 </span>
+      </h1>
+      <h1>
+        Time: <span id="time"> 0 </span> secs
+      </h1>
+    </header>
     <main class="container">
-      <div class="content">
+      <div class="content" id="startContainer">
         <h1>
           Test Your Javascript Knowledge!
         </h1>
@@ -28,6 +30,23 @@
           Stat now
         </button>
       </div> 
+      <div class=quizContainer>
+        <h1>
+          Question
+        </h1>
+        <button>
+          Answer 1
+        </button>
+        <button>
+          Answer 2
+        </button>
+        <button>
+          Answer 3
+        </button>
+        <button>
+          Answer 4
+        </button>
+      </div>
     </main>
   </body>
   <script src="./assets/js/script.js"></script>
