@@ -38,13 +38,27 @@ header h1, a {
   height: 80vh;
 }
 
-.content {
+.startScreenContent {
   position: absolute;
   top: 45%;
   left: 50%;
   transform: translate(-50%,-50%);
+  background-color: crimson;
 }
 
-.quizContainer {
+.quizContent {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%,-50%);
   background-color: blue;
+}
+
+.quizContent h1 {
+  font-size: 5rem;
+}
+
+.quizContent button {
+  display:block;
+  margin: auto;
 }

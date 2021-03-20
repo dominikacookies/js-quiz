@@ -12,14 +12,32 @@ const question1 = {
 
 console.log  (question1.correctAnswer())
 
-document.getElementById("startButton").addEventListener("click", startQuiz);
+const constructQuizContentDiv = () => {
+  console.log("it works");
+}
+
+const populateQ1Information = () => {
+  console.log("it works");
+}
+
+const destructStartScreenContentDiv = () => {
+  console.log("it works");
+}
+
+const startTimer = () => {
+  console.log("it works");
+}
+
 
 function startQuiz () {
-  console.log("Hey")
-  // remove id startContainer layout of html to include questions
-  
-
+  // create quizContent div
+  const quizContentDiv = constructQuizContentDiv ();
+  // fill div with question 1 info
+  const q1Information = populateQ1Information ();
+  //destruct startScreenContent div
+  const startScreenContentDiv = destructStartScreenContentDiv ();
   // start timer
+  const timer = startTimer ();
 }
 
 function q1ValuePopulator () {
@@ -33,3 +51,5 @@ function q1AnswerValidator () {
   //if wrong take away time and stay on page
 
 }
+
+document.getElementById("startButton").addEventListener("click", startQuiz);
