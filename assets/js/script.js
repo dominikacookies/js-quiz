@@ -1,6 +1,7 @@
 let timeLeft = 3;
 let score = 0;
 const bodyElement = document.body ;
+const timerElement = document.getElementById("time") ;
 
 const question1 = {
   questionText: "This is the question",
@@ -66,17 +67,21 @@ const destructStartScreenContentDiv = () => {
 
 const startTimer = () => {
   const timerTick = () => {
-    timeLeft -= 1;
-    document.getElementById("time").textContent = timeLeft;
-  }
+    if (timeLeft === 0) {
+      timerElement.textContent = "0";
+      clearInterval(timer);
+      console.log("end")
+    }
+
+    if (timeLeft > 0) {
+      timeLeft -= 1;
+      timerElement.textContent = timeLeft;
+    }
+  };
 
   const timer = setInterval(timerTick, 1000);
-
-  if (timeLeft < 0) {
-    clearInterval(timer);
-    console.log("end");
-  }
 }
+
 
 
 
