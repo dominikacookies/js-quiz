@@ -1,4 +1,4 @@
-let timeLeft = 60;
+let timeLeft = 300;
 let score = 0;
 const timerElement = document.getElementById("time");
 const scoreElement = document.getElementById("score");
@@ -16,7 +16,31 @@ const question2 = {
   questionText: "Second Question ",
   answerChoices: ["A1", "A2", "A3", "A4"],
   correctAnswer: function () {
-    return this.answerChoices[3]
+    return this.answerChoices[0]
+  }
+};
+
+const question3 = {
+  questionText: "Third Question ",
+  answerChoices: ["B1", "B2", "B3", "B4"],
+  correctAnswer: function () {
+    return this.answerChoices[2]
+  }
+};
+
+const question4 = {
+  questionText: "Fourth Question ",
+  answerChoices: ["C1", "C2", "C3", "C4"],
+  correctAnswer: function () {
+    return this.answerChoices[2]
+  }
+};
+
+const question5 = {
+  questionText: "Fifth Question ",
+  answerChoices: ["D1", "D2", "D3", "D4"],
+  correctAnswer: function () {
+    return this.answerChoices[1]
   }
 };
 
@@ -130,7 +154,7 @@ function q1Logic () {
       score += 5;
       scoreElement.textContent = score;
       event.target.setAttribute("class", "button--correct");
-      setTimeout(() => {q2Logic()}, 650);
+      setTimeout(() => {q2Logic()}, 500);
     } else {
       timeLeft -= 5;
       event.target.setAttribute("class", "button--wrong");
@@ -149,21 +173,130 @@ function q1Logic () {
 
 function q2Logic () {
   populateQ2info ();
+  button1.classList.remove("button--correct", "button--wrong");
+  button2.classList.remove("button--correct", "button--wrong");
+  button3.classList.remove("button--correct", "button--wrong");
   button4.classList.remove("button--correct", "button--wrong");
-  console.log ("we're onto q2");
+  const q2AnswerValidator = (event) => {
+    if (event.target.textContent === question2.correctAnswer()) {
+      score += 5;
+      scoreElement.textContent = score;
+      event.target.setAttribute("class", "button--correct");
+      setTimeout(() => {q3Logic()}, 500);
+    } else {
+      timeLeft -= 5;
+      event.target.setAttribute("class", "button--wrong");
+      return;
+    }
+  }
+  button1.addEventListener("click", q2AnswerValidator);
+  button2.addEventListener("click", q2AnswerValidator);
+  button3.addEventListener("click", q2AnswerValidator);
+  button4.addEventListener("click", q2AnswerValidator);
 }
 
 function populateQ2info () {
-  const quizContentH1 = document.getElementById("quizContentH1");
   quizContentH1.textContent = question2.questionText;
-  const button1 = document.getElementById("#1");
   button1.textContent = question2.answerChoices[0];
-  const button2 = document.getElementById("#2");
-  button2.textContent = question2.answerChoices[0];
-  const button3 = document.getElementById("#3");
-  button3.textContent = question2.answerChoices[0];
-  const button4 = document.getElementById("#4");
-  button4.textContent = question2.answerChoices[0];
+  button2.textContent = question2.answerChoices[1];
+  button3.textContent = question2.answerChoices[2];
+  button4.textContent = question2.answerChoices[3];
+}
+
+function q3Logic () {
+  populateQ3info ();
+  button1.classList.remove("button--correct", "button--wrong");
+  button2.classList.remove("button--correct", "button--wrong");
+  button3.classList.remove("button--correct", "button--wrong");
+  button4.classList.remove("button--correct", "button--wrong");
+  const q3AnswerValidator = (event) => {
+    if (event.target.textContent === question3.correctAnswer()) {
+      score += 5;
+      scoreElement.textContent = score;
+      event.target.setAttribute("class", "button--correct");
+      setTimeout(() => {q4Logic()}, 500);
+    } else {
+      timeLeft -= 5;
+      event.target.setAttribute("class", "button--wrong");
+      return;
+    }
+  }
+  button1.addEventListener("click", q3AnswerValidator);
+  button2.addEventListener("click", q3AnswerValidator);
+  button3.addEventListener("click", q3AnswerValidator);
+  button4.addEventListener("click", q3AnswerValidator);
+}
+
+function populateQ3info () {
+  quizContentH1.textContent = question3.questionText;
+  button1.textContent = question3.answerChoices[0];
+  button2.textContent = question3.answerChoices[1];
+  button3.textContent = question3.answerChoices[2];
+  button4.textContent = question3.answerChoices[3];
+}
+
+function q4Logic () {
+  populateQ4info ();
+  button1.classList.remove("button--correct", "button--wrong");
+  button2.classList.remove("button--correct", "button--wrong");
+  button3.classList.remove("button--correct", "button--wrong");
+  button4.classList.remove("button--correct", "button--wrong");
+  const q4AnswerValidator = (event) => {
+    if (event.target.textContent === question4.correctAnswer()) {
+      score += 5;
+      scoreElement.textContent = score;
+      event.target.setAttribute("class", "button--correct");
+      setTimeout(() => {q5Logic()}, 500);
+    } else {
+      timeLeft -= 5;
+      event.target.setAttribute("class", "button--wrong");
+      return;
+    }
+  }
+  button1.addEventListener("click", q4AnswerValidator);
+  button2.addEventListener("click", q4AnswerValidator);
+  button3.addEventListener("click", q4AnswerValidator);
+  button4.addEventListener("click", q4AnswerValidator);
+}
+
+function populateQ4info () {
+  quizContentH1.textContent = question4.questionText;
+  button1.textContent = question4.answerChoices[0];
+  button2.textContent = question4.answerChoices[1];
+  button3.textContent = question4.answerChoices[2];
+  button4.textContent = question4.answerChoices[3];
+}
+
+function q5Logic () {
+  populateQ5info ();
+  button1.classList.remove("button--correct", "button--wrong");
+  button2.classList.remove("button--correct", "button--wrong");
+  button3.classList.remove("button--correct", "button--wrong");
+  button4.classList.remove("button--correct", "button--wrong");
+  const q5AnswerValidator = (event) => {
+    if (event.target.textContent === question5.correctAnswer()) {
+      score += 5;
+      scoreElement.textContent = score;
+      event.target.setAttribute("class", "button--correct");
+      timeLeft = 0;
+    } else {
+      timeLeft -= 5;
+      event.target.setAttribute("class", "button--wrong");
+      return;
+    }
+  }
+  button1.addEventListener("click", q5AnswerValidator);
+  button2.addEventListener("click", q5AnswerValidator);
+  button3.addEventListener("click", q5AnswerValidator);
+  button4.addEventListener("click", q5AnswerValidator);
+}
+
+function populateQ5info () {
+  quizContentH1.textContent = question5.questionText;
+  button1.textContent = question5.answerChoices[0];
+  button2.textContent = question5.answerChoices[1];
+  button3.textContent = question5.answerChoices[2];
+  button4.textContent = question5.answerChoices[3];
 }
 
 function endQuiz () {
