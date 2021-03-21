@@ -1,7 +1,7 @@
 let timeLeft = 3;
 let score = 0;
-const bodyElement = document.body ;
-const timerElement = document.getElementById("time") ;
+const timerElement = document.getElementById("time");
+const startScreenDiv = document.getElementById("startScreenContent");
 
 const question1 = {
   questionText: "This is the question",
@@ -11,27 +11,18 @@ const question1 = {
   }
 };
 
-console.log  (question1.correctAnswer())
-
-const constructAnswerButtons = (quizContentDiv) => {
-  const answerButton = document.createElement("button");
-  console.log (answerButton)
-  return answerButton;
-}
-
 const constructQuizContentDiv = () => {
-  console.log("it works");
-  // construct div
+  // construct div to hold quiz content
   const quizContentDiv = document.createElement("div");
-  // add a class
+  // add a class and id
   quizContentDiv.setAttribute("class", "quizContent");
-  // append it under the quiz content div
-  document.getElementById("container").appendChild(quizContentDiv);
-  // add h1
+  quizContentDiv.setAttribute("id", "quizContent");
+  
+  // create h1 and populate with first question
   const quizContentH1 = document.createElement("h1");
+  quizContentH1.textContent = question1.questionText;
   //append under content div
   quizContentDiv.appendChild(quizContentH1);
-  quizContentH1.textContent = question1.questionText;
 
   // add buttons, ids and append under content div
   const button1 = document.createElement("button");
@@ -54,44 +45,45 @@ const constructQuizContentDiv = () => {
   button4.textContent = question1.answerChoices[3];
   quizContentDiv.appendChild(button4);
   
-  // return entire div
+  // return the quiz content div
   return quizContentDiv;
 }
 
-const destructStartScreenContentDiv = () => {
-  startScreenDiv = document.getElementById("startScreenContent");
-  startScreenDiv.remove();
+const constructGameEndDiv = () => {
+  const gameEndDiv = document.createElement("div");
+  // add a class and id
+  gameEndDiv.setAttribute("class", "gameEnd");
+  gameEndDiv.setAttribute("id", "gameEnd");
+  // create h1 and populate
+  const gameEndText = document.createElement("h1");
+  gameEndText.textContent = "Game Over";
+  //append under content div
+  gameEndDiv.appendChild(gameEndText);
+
+  return gameEndDiv;
 }
 
-
-
 const startTimer = () => {
+  timerElement.textContent = timeLeft;
   const timerTick = () => {
-    if (timeLeft === 0) {
+    timeLeft -= 1;
+    timerElement.textContent = timeLeft;
+
+    if (timeLeft < 0) {
       timerElement.textContent = "0";
       clearInterval(timer);
-      console.log("end")
-    }
-
-    if (timeLeft > 0) {
-      timeLeft -= 1;
-      timerElement.textContent = timeLeft;
+      console.log("end");
+      // destruct quizContentDiv
+      quizContentDivElement = document.getElementById("quizContent");
+      quizContentDivElement.remove()
+      //construct gameEndDiv
+      const gameEndDivElement = constructGameEndDiv ();
+      //append gameEndDiv to container
+      document.getElementById("container").appendChild(gameEndDivElement);
     }
   };
 
   const timer = setInterval(timerTick, 1000);
-}
-
-
-
-
-function startQuiz () {
-  // create quizContent div
-  constructQuizContentDiv ();
-  //destruct startScreenContent div
-  destructStartScreenContentDiv ();
-  // start timer
-  const timerCountdown = startTimer ();
 }
 
 function q1AnswerValidator () {
@@ -99,6 +91,17 @@ function q1AnswerValidator () {
 
   //if wrong take away time and stay on page
 
+}
+
+function startQuiz () {
+  //destruct startScreenContent div
+  startScreenDiv.remove()
+  // create quizContent div
+  const quizContentDivElement = constructQuizContentDiv ();
+  // insert quizContent div
+  document.getElementById("container").appendChild(quizContentDivElement);
+  // start timer
+  startTimer ();
 }
 
 document.getElementById("startButton").addEventListener("click", startQuiz);
