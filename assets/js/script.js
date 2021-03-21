@@ -1,4 +1,4 @@
-let timeLeft = 40;
+let timeLeft = 6;
 let score = 0;
 const timerElement = document.getElementById("time");
 const scoreElement = document.getElementById("score");
@@ -58,8 +58,32 @@ const constructGameEndDiv = () => {
   // create h1 and populate
   const gameEndText = document.createElement("h1");
   gameEndText.textContent = "Game Over";
-  //append under content div
   gameEndDiv.appendChild(gameEndText);
+
+  // create h2 and populate
+  const highScoreSubmissionIntructions = document.createElement("h2");
+  highScoreSubmissionIntructions.textContent = "Insert your username below to add your score to the highscores board.";
+  //append under content div
+  gameEndDiv.appendChild(highScoreSubmissionIntructions);
+
+  //create form div
+  const formDiv = document.createElement("div");
+  gameEndDiv.setAttribute("class", "form");
+  gameEndDiv.setAttribute("id", "form");
+  gameEndDiv.appendChild(formDiv);
+
+  //create form input
+  const usernameInput = document.createElement("input");
+  gameEndDiv.setAttribute("class", "usernameInput");
+  gameEndDiv.setAttribute("id", "usernameInput");
+  formDiv.appendChild(usernameInput);
+
+  //create form submit button
+  const submitButton = document.createElement("button");
+  gameEndDiv.setAttribute("class", "submitButton");
+  gameEndDiv.setAttribute("id", "submitButton");
+  submitButton.textContent = "Submit"
+  formDiv.appendChild(submitButton);
 
   return gameEndDiv;
 }
@@ -93,7 +117,7 @@ function q1Logic () {
       scoreElement.textContent = score;
       event.target.setAttribute("class", "button--correct");
       console.log ("correct");
-      setTimeout(() => {q2Screen()}, 500);
+      setTimeout(() => {q2Screen()}, 800);
     } else {
       timeLeft -= 5;
       console.log ("wrong answer");
