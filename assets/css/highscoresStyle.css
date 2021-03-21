@@ -1,0 +1,19 @@
+html {
+  font-size:10px;
+}
+
+body {
+  background-image: linear-gradient(
+    to left top, 
+    #d16ba5, #ef7192, #ff7f7b, #ff9565, #ffaf53, #ffb94f, #ffc34c, #ffcd4a, #ffc64f, #ffbe55, #fdb85a, #fbb15f
+    );
+  text-align: center;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+}

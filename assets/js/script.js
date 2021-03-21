@@ -311,9 +311,18 @@ function endQuiz () {
   document.getElementById("submitButton").addEventListener("click", submitHighScore);
 }
 
-function submitHighScore () {
-  console.log ("submitted")
+function submitHighScore (event) {
+  event.preventDefault();
+  console.log ("submitted");
+  const usernameInput = document.getElementById("usernameInput");    
+  const username = usernameInput.value.trim(); 
+  localStorage.setItem("username", username);
+    
+    //const inputUsernameString = JSON.stringify(username);
+    //localStorage.setItem("username", inputUsernameString);
+    //localStorage.setItem("score", score.value());
 }
+
 
 
 
