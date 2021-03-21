@@ -1,6 +1,7 @@
-let timeLeft = 3;
+let timeLeft = 40;
 let score = 0;
 const timerElement = document.getElementById("time");
+const scoreElement = document.getElementById("score");
 const startScreenDiv = document.getElementById("startScreenContent");
 
 const question1 = {
@@ -82,15 +83,36 @@ const startTimer = () => {
       document.getElementById("container").appendChild(gameEndDivElement);
     }
   };
-
   const timer = setInterval(timerTick, 1000);
 }
 
-function q1AnswerValidator () {
-  //if button text matches correct answer go add points and go to next question
+function q1Logic () {
+  const q1AnswerValidator = (event) => {
+    if (event.target.textContent === question1.correctAnswer()) {
+      score += 5;
+      scoreElement.textContent = score;
+      event.target.setAttribute("class", "button--correct");
+      console.log ("correct");
+      setTimeout(() => {q2Screen()}, 500);
+    } else {
+      timeLeft -= 5;
+      console.log ("wrong answer");
+      return;
+    }
+  }
 
-  //if wrong take away time and stay on page
+  function q2Screen () {
+    console.log ("we're onto q2");
+  }
 
+  button1 = document.getElementById("#1");
+  button1.addEventListener("click", q1AnswerValidator);
+  button2 = document.getElementById("#2");
+  button2.addEventListener("click", q1AnswerValidator);
+  button3 = document.getElementById("#4");
+  button3.addEventListener("click", q1AnswerValidator);
+  button4 = document.getElementById("#4");
+  button4.addEventListener("click", q1AnswerValidator); 
 }
 
 function startQuiz () {
@@ -102,6 +124,10 @@ function startQuiz () {
   document.getElementById("container").appendChild(quizContentDivElement);
   // start timer
   startTimer ();
+  q1Logic ();
 }
+
+
+
 
 document.getElementById("startButton").addEventListener("click", startQuiz);
