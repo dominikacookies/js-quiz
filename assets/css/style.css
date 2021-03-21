@@ -69,7 +69,11 @@ header h1, a {
 }
 
 .button--correct {
-  background-color: rgb(0, 199, 0);
+  background-color: rgb(131, 247, 131);
+}
+
+.button--wrong {
+  background-color: rgb(240, 110, 110);
 }
 
 .form {
@@ -81,5 +85,5 @@ header h1, a {
 }
 
 .submitButton {
-  
+
 }
