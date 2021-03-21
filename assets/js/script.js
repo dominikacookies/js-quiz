@@ -12,6 +12,14 @@ const question1 = {
   }
 };
 
+const question2 = {
+  questionText: "Second Question ",
+  answerChoices: ["A1", "A2", "A3", "A4"],
+  correctAnswer: function () {
+    return this.answerChoices[3]
+  }
+};
+
 const constructQuizContentDiv = () => {
   // construct div to hold quiz content
   const quizContentDiv = document.createElement("div");
@@ -21,6 +29,7 @@ const constructQuizContentDiv = () => {
   
   // create h1 and populate with first question
   const quizContentH1 = document.createElement("h1");
+  quizContentH1.setAttribute("id", "quizContentH1");
   quizContentH1.textContent = question1.questionText;
   //append under content div
   quizContentDiv.appendChild(quizContentH1);
@@ -121,7 +130,7 @@ function q1Logic () {
       score += 5;
       scoreElement.textContent = score;
       event.target.setAttribute("class", "button--correct");
-      setTimeout(() => {q2Logic()}, 800);
+      setTimeout(() => {q2Logic()}, 650);
     } else {
       timeLeft -= 5;
       event.target.setAttribute("class", "button--wrong");
@@ -140,13 +149,21 @@ function q1Logic () {
 
 function q2Logic () {
   populateQ2info ();
-  button4 = document.getElementById("#4");
-  button4.classList.remove("button--correct", "button--wrong")
+  button4.classList.remove("button--correct", "button--wrong");
   console.log ("we're onto q2");
 }
 
 function populateQ2info () {
-  console.log ("here")
+  const quizContentH1 = document.getElementById("quizContentH1");
+  quizContentH1.textContent = question2.questionText;
+  const button1 = document.getElementById("#1");
+  button1.textContent = question2.answerChoices[0];
+  const button2 = document.getElementById("#2");
+  button2.textContent = question2.answerChoices[0];
+  const button3 = document.getElementById("#3");
+  button3.textContent = question2.answerChoices[0];
+  const button4 = document.getElementById("#4");
+  button4.textContent = question2.answerChoices[0];
 }
 
 function endQuiz () {
