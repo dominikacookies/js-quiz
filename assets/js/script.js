@@ -1,4 +1,4 @@
-let timeLeft = 91;
+let timeLeft = 3;
 let score = 0;
 const bodyElement = document.body ;
 
@@ -31,7 +31,8 @@ const constructQuizContentDiv = () => {
   //append under content div
   quizContentDiv.appendChild(quizContentH1);
   quizContentH1.textContent = question1.questionText;
-  // add buttons - why does this not work?
+
+  // add buttons, ids and append under content div
   const button1 = document.createElement("button");
   button1.setAttribute("id", "#1");
   button1.textContent = question1.answerChoices[0];
@@ -51,33 +52,41 @@ const constructQuizContentDiv = () => {
   button4.setAttribute("id", "#4");
   button4.textContent = question1.answerChoices[3];
   quizContentDiv.appendChild(button4);
-
-  console.log (button1);
-
-  //append under content div
-  //quizContentDiv.appendChild(answerButtons);
-
+  
   // return entire div
-  return quizContentH1;
   return quizContentDiv;
 }
 
 const destructStartScreenContentDiv = () => {
-  console.log("it works");
+  startScreenDiv = document.getElementById("startScreenContent");
+  startScreenDiv.remove();
 }
 
+
+
 const startTimer = () => {
-  console.log("it works");
+  const timerTick = () => {
+    timeLeft -= 1;
+    document.getElementById("time").textContent = timeLeft;
+  }
+
+  const timer = setInterval(timerTick, 1000);
+
+  if (timeLeft < 0) {
+    clearInterval(timer);
+    console.log("end");
+  }
 }
+
 
 
 function startQuiz () {
   // create quizContent div
-  const quizContentDivElement = constructQuizContentDiv ();
+  constructQuizContentDiv ();
   //destruct startScreenContent div
-  const startScreenContentDiv = destructStartScreenContentDiv ();
+  destructStartScreenContentDiv ();
   // start timer
-  const timer = startTimer ();
+  const timerCountdown = startTimer ();
 }
 
 function q1AnswerValidator () {

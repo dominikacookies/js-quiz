@@ -30,3 +30,16 @@ const startQuiz = () => {
   //start timer
   // startTimer ();
 };
+
+const constructAnswerButtons = (quizContentDiv) => {
+  const answerButton = document.createElement("button");
+  quizContentDiv.appendChild(answerButton);
+  console.log (answerButton)
+  return answerButton;
+}
+
+const answerButtons = question1.answerChoices.every(constructAnswerButtons);
+console.log (answerButton);
+// add ids
+
+const answerButtons = question1.answerChoices.every(constructAnswerButtons);
