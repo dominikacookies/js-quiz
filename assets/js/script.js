@@ -318,8 +318,6 @@ function populateQ5info () {
   button4.textContent = question5.answerChoices[3];
 }
 
-
-
 function endQuiz () {
   // destruct quizContentDiv
   quizContentDivElement = document.getElementById("quizContent");
@@ -352,7 +350,6 @@ function submitHighScore (event) {
     //const inputUsernameString = JSON.stringify(username);
     //localStorage.setItem("username", inputUsernameString);
 }
-
 
 
 
