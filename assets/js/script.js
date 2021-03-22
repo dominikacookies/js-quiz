@@ -5,40 +5,40 @@ const scoreElement = document.getElementById("score");
 const startScreenDiv = document.getElementById("startScreenContent");
 
 const question1 = {
-  questionText: "This is the question",
-  answerChoices: ["1", "2", "3", "4"],
+  questionText: "What type of brackets do you place array items in?",
+  answerChoices: ["Curly brackets", "Parentheses", "Angle brackets", "Square brackets"],
   correctAnswer: function () {
     return this.answerChoices[3]
   }
 };
 
 const question2 = {
-  questionText: "Second Question ",
-  answerChoices: ["A1", "A2", "A3", "A4"],
+  questionText: "Which of the below is the correct syntax for declaring a function?",
+  answerChoices: ["function name () {}", "function name {} ()", "name function {} ()", "name function ()  {}"],
   correctAnswer: function () {
     return this.answerChoices[0]
   }
 };
 
 const question3 = {
-  questionText: "Third Question ",
-  answerChoices: ["B1", "B2", "B3", "B4"],
+  questionText: "What must you do before storing an object in local storage?",
+  answerChoices: ["Update its name", "Turn it into an array", "Turn it into a string", "Nothing"],
   correctAnswer: function () {
     return this.answerChoices[2]
   }
 };
 
 const question4 = {
-  questionText: "Fourth Question ",
-  answerChoices: ["C1", "C2", "C3", "C4"],
+  questionText: "Which of the below methods allow you to add a css class to a html object?",
+  answerChoices: ["createElement", "appendChild", "setAttribute", "getElementById"],
   correctAnswer: function () {
     return this.answerChoices[2]
   }
 };
 
 const question5 = {
-  questionText: "Fifth Question ",
-  answerChoices: ["D1", "D2", "D3", "D4"],
+  questionText: "Which of the below is not a data type in Javascript?",
+  answerChoices: ["string", "none", "boolean", "number"],
   correctAnswer: function () {
     return this.answerChoices[1]
   }
@@ -113,7 +113,6 @@ const constructGameEndDiv = () => {
 
   //create form submit button
   const submitButton = document.createElement("button");
-  gameEndDiv.setAttribute("class", "submitButton");
   gameEndDiv.setAttribute("id", "submitButton");
   submitButton.textContent = "Submit"
   formDiv.appendChild(submitButton);
@@ -299,6 +298,8 @@ function populateQ5info () {
   button4.textContent = question5.answerChoices[3];
 }
 
+
+
 function endQuiz () {
   // destruct quizContentDiv
   quizContentDivElement = document.getElementById("quizContent");
@@ -309,18 +310,27 @@ function endQuiz () {
   document.getElementById("container").appendChild(gameEndDivElement);
   //submit score
   document.getElementById("submitButton").addEventListener("click", submitHighScore);
+
 }
 
 function submitHighScore (event) {
   event.preventDefault();
   console.log ("submitted");
+  //localStorage.setItem("score", score)
   const usernameInput = document.getElementById("usernameInput");    
   const username = usernameInput.value.trim(); 
-  localStorage.setItem("username", username);
+
+  const highscoreObject = {
+    username,
+    score,
+  };
+
+  const highscoreObjectString = JSON.stringify(highscoreObject);
+  localStorage.setItem("highscore", highscoreObjectString);
+  //localStorage.setItem("username", username);
     
     //const inputUsernameString = JSON.stringify(username);
     //localStorage.setItem("username", inputUsernameString);
-    //localStorage.setItem("score", score.value());
 }
 
 
