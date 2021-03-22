@@ -152,12 +152,15 @@ function q1Logic () {
     if (event.target.textContent === question1.correctAnswer()) {
       score += 5;
       scoreElement.textContent = score;
+      button1.removeEventListener("click", q1AnswerValidator);
+      button2.removeEventListener("click", q1AnswerValidator);
+      button3.removeEventListener("click", q1AnswerValidator);
+      button4.removeEventListener("click", q1AnswerValidator);
       event.target.setAttribute("class", "button--correct");
       setTimeout(() => {q2Logic()}, 500);
     } else {
       timeLeft -= 5;
       event.target.setAttribute("class", "button--wrong");
-      return;
     }
   }
   button1 = document.getElementById("#1");
@@ -176,11 +179,16 @@ function q2Logic () {
   button2.classList.remove("button--correct", "button--wrong");
   button3.classList.remove("button--correct", "button--wrong");
   button4.classList.remove("button--correct", "button--wrong");
+
   const q2AnswerValidator = (event) => {
     if (event.target.textContent === question2.correctAnswer()) {
       score += 5;
       scoreElement.textContent = score;
       event.target.setAttribute("class", "button--correct");
+      button1.removeEventListener("click", q2AnswerValidator);
+      button2.removeEventListener("click", q2AnswerValidator);
+      button3.removeEventListener("click", q2AnswerValidator);
+      button4.removeEventListener("click", q2AnswerValidator);
       setTimeout(() => {q3Logic()}, 500);
     } else {
       timeLeft -= 5;
@@ -212,6 +220,10 @@ function q3Logic () {
     if (event.target.textContent === question3.correctAnswer()) {
       score += 5;
       scoreElement.textContent = score;
+      button1.removeEventListener("click", q3AnswerValidator);
+      button2.removeEventListener("click", q3AnswerValidator);
+      button3.removeEventListener("click", q3AnswerValidator);
+      button4.removeEventListener("click", q3AnswerValidator);
       event.target.setAttribute("class", "button--correct");
       setTimeout(() => {q4Logic()}, 500);
     } else {
@@ -244,6 +256,10 @@ function q4Logic () {
     if (event.target.textContent === question4.correctAnswer()) {
       score += 5;
       scoreElement.textContent = score;
+      button1.removeEventListener("click", q4AnswerValidator);
+      button2.removeEventListener("click", q4AnswerValidator);
+      button3.removeEventListener("click", q4AnswerValidator);
+      button4.removeEventListener("click", q4AnswerValidator);
       event.target.setAttribute("class", "button--correct");
       setTimeout(() => {q5Logic()}, 500);
     } else {
@@ -276,6 +292,10 @@ function q5Logic () {
     if (event.target.textContent === question5.correctAnswer()) {
       score += 5;
       scoreElement.textContent = score;
+      button1.removeEventListener("click", q5AnswerValidator);
+      button2.removeEventListener("click", q5AnswerValidator);
+      button3.removeEventListener("click", q5AnswerValidator);
+      button4.removeEventListener("click", q5AnswerValidator);
       event.target.setAttribute("class", "button--correct");
       timeLeft = 0;
     } else {
