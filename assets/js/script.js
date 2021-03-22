@@ -4,6 +4,7 @@ const timerElement = document.getElementById("time");
 const scoreElement = document.getElementById("score");
 const startScreenDiv = document.getElementById("startScreenContent");
 
+//Quiz question objects
 const question1 = {
   questionText: "What type of brackets do you place array items in?",
   answerChoices: ["Curly brackets", "Parentheses", "Angle brackets", "Square brackets"],
@@ -44,10 +45,10 @@ const question5 = {
   }
 };
 
+//Construction of the quiz questions screen
 const constructQuizContentDiv = () => {
   // construct div to hold quiz content
   const quizContentDiv = document.createElement("div");
-  // add a class and id
   quizContentDiv.setAttribute("class", "quizContent");
   quizContentDiv.setAttribute("id", "quizContent");
   
@@ -55,10 +56,10 @@ const constructQuizContentDiv = () => {
   const quizContentH1 = document.createElement("h1");
   quizContentH1.setAttribute("id", "quizContentH1");
   quizContentH1.textContent = question1.questionText;
-  //append under content div
+  //append under quiz content div
   quizContentDiv.appendChild(quizContentH1);
 
-  // add buttons, ids and append under content div
+  // add buttons and append them under the content div
   const button1 = document.createElement("button");
   button1.setAttribute("id", "#1");
   button1.textContent = question1.answerChoices[0];
@@ -79,21 +80,23 @@ const constructQuizContentDiv = () => {
   button4.textContent = question1.answerChoices[3];
   quizContentDiv.appendChild(button4);
   
-  // return the quiz content div
   return quizContentDiv;
 }
 
+//Construction of game over screen
 const constructGameEndDiv = () => {
+  // construct div to hold content
   const gameEndDiv = document.createElement("div");
-  // add a class and id
   gameEndDiv.setAttribute("class", "gameEnd");
   gameEndDiv.setAttribute("id", "gameEnd");
-  // create h1 and populate
+
+  // create h1
   const gameEndText = document.createElement("h1");
   gameEndText.textContent = "Game Over";
+  // append under content div
   gameEndDiv.appendChild(gameEndText);
 
-  // create h2 and populate
+  // create h2
   const highScoreSubmissionIntructions = document.createElement("h2");
   highScoreSubmissionIntructions.textContent = "Insert your username below to add your score to the highscores board.";
   //append under content div
@@ -103,29 +106,34 @@ const constructGameEndDiv = () => {
   const formDiv = document.createElement("div");
   gameEndDiv.setAttribute("class", "form");
   gameEndDiv.setAttribute("id", "form");
+  //append under content div
   gameEndDiv.appendChild(formDiv);
 
   //create form input
   const usernameInput = document.createElement("input");
   gameEndDiv.setAttribute("class", "usernameInput");
   gameEndDiv.setAttribute("id", "usernameInput");
+  //append under form div
   formDiv.appendChild(usernameInput);
 
   //create form submit button
   const submitButton = document.createElement("button");
   gameEndDiv.setAttribute("id", "submitButton");
   submitButton.textContent = "Submit"
+  //append under form div
   formDiv.appendChild(submitButton);
 
   return gameEndDiv;
 }
-
+//Activation of countdown timer
 const startTimer = () => {
+  //Populate the timer with the timeLeft variable
   timerElement.textContent = timeLeft;
+  //Deduct 1 from timeLeft everytime the interval passes
   const timerTick = () => {
     timeLeft -= 1;
     timerElement.textContent = timeLeft;
-
+    //Clear the interval once timeLeft is less than zero
     if (timeLeft < 0) {
       timerElement.textContent = "0";
       clearInterval(timer);
@@ -138,36 +146,48 @@ const startTimer = () => {
 function startQuiz () {
   //destruct startScreenContent div
   startScreenDiv.remove()
-  // create quizContent div
+  // create quiz content div
   const quizContentDivElement = constructQuizContentDiv ();
-  // insert quizContent div
+  // append the quiz content div to the html main
   document.getElementById("container").appendChild(quizContentDivElement);
   // start timer
   startTimer ();
+  // proceed to validate user answers
   q1Logic ();
 }
 
+// validate user answers to question 1
 function q1Logic () {
   const q1AnswerValidator = (event) => {
+    // if button text matches correct answer from question object:
     if (event.target.textContent === question1.correctAnswer()) {
+      // add five points to the score
       score += 5;
       scoreElement.textContent = score;
+      // change button colour to green
       event.target.setAttribute("class", "button--correct");
+      //remove event listeners from the buttons
       button1.removeEventListener("click", q1AnswerValidator);
       button2.removeEventListener("click", q1AnswerValidator);
       button3.removeEventListener("click", q1AnswerValidator);
       button4.removeEventListener("click", q1AnswerValidator);
+      // wait 0.5 secs and move onto the next question
       setTimeout(() => {q2Logic()}, 500);
     } else {
+      // takeaway 5 from time
       timeLeft -= 5;
+      // change button colour to red
       event.target.setAttribute("class", "button--wrong");
+      //remove event listeners from the buttons
       button1.removeEventListener("click", q1AnswerValidator);
       button2.removeEventListener("click", q1AnswerValidator);
       button3.removeEventListener("click", q1AnswerValidator);
       button4.removeEventListener("click", q1AnswerValidator);
+      // wait 0.5 secs and move onto the next question
       setTimeout(() => {q2Logic()}, 500);
     }
   }
+  // add event listeners to answer buttons
   button1 = document.getElementById("#1");
   button1.addEventListener("click", q1AnswerValidator);
   button2 = document.getElementById("#2");
@@ -178,6 +198,9 @@ function q1Logic () {
   button4.addEventListener("click", q1AnswerValidator); 
 }
 
+
+// validate user answers to question 2
+// refer to q1Logic for step-by-step breakdown of the logic
 function q2Logic () {
   populateQ2info ();
   button1.classList.remove("button--correct", "button--wrong");
@@ -211,6 +234,7 @@ function q2Logic () {
   button4.addEventListener("click", q2AnswerValidator);
 }
 
+// populate quiz content elements with question 2 information
 function populateQ2info () {
   quizContentH1.textContent = question2.questionText;
   button1.textContent = question2.answerChoices[0];
@@ -219,6 +243,9 @@ function populateQ2info () {
   button4.textContent = question2.answerChoices[3];
 }
 
+
+// validate user answers to question 3
+// refer to q1Logic for step-by-step breakdown of the logic
 function q3Logic () {
   populateQ3info ();
   button1.classList.remove("button--correct", "button--wrong");
@@ -251,6 +278,7 @@ function q3Logic () {
   button4.addEventListener("click", q3AnswerValidator);
 }
 
+// populate quiz content elements with question 3 information
 function populateQ3info () {
   quizContentH1.textContent = question3.questionText;
   button1.textContent = question3.answerChoices[0];
@@ -259,6 +287,9 @@ function populateQ3info () {
   button4.textContent = question3.answerChoices[3];
 }
 
+
+// validate user answers to question 4
+// refer to q1Logic for step-by-step breakdown of the logic
 function q4Logic () {
   populateQ4info ();
   button1.classList.remove("button--correct", "button--wrong");
@@ -291,6 +322,7 @@ function q4Logic () {
   button4.addEventListener("click", q4AnswerValidator);
 }
 
+// populate quiz content elements with question 4 information
 function populateQ4info () {
   quizContentH1.textContent = question4.questionText;
   button1.textContent = question4.answerChoices[0];
@@ -299,6 +331,9 @@ function populateQ4info () {
   button4.textContent = question4.answerChoices[3];
 }
 
+
+// validate user answers to question 5
+// refer to q1Logic for step-by-step breakdown of the logic
 function q5Logic () {
   populateQ5info ();
   button1.classList.remove("button--correct", "button--wrong");
@@ -331,6 +366,7 @@ function q5Logic () {
   button4.addEventListener("click", q5AnswerValidator);
 }
 
+// populate quiz content elements with question 5 information
 function populateQ5info () {
   quizContentH1.textContent = question5.questionText;
   button1.textContent = question5.answerChoices[0];
