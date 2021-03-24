@@ -1,5 +1,6 @@
 let timeLeft = 300;
 let score = 0;
+let highscores = [ ]
 const timerElement = document.getElementById("time");
 const scoreElement = document.getElementById("score");
 const startScreenDiv = document.getElementById("startScreenContent");
@@ -111,14 +112,14 @@ const constructGameEndDiv = () => {
 
   //create form input
   const usernameInput = document.createElement("input");
-  gameEndDiv.setAttribute("class", "usernameInput");
-  gameEndDiv.setAttribute("id", "usernameInput");
+  usernameInput.setAttribute("class", "usernameInput");
+  usernameInput.setAttribute("id", "usernameInput");
   //append under form div
   formDiv.appendChild(usernameInput);
 
   //create form submit button
   const submitButton = document.createElement("button");
-  gameEndDiv.setAttribute("id", "submitButton");
+  submitButton.setAttribute("id", "submitButton");
   submitButton.textContent = "Submit"
   //append under form div
   formDiv.appendChild(submitButton);
@@ -391,18 +392,29 @@ function endQuiz () {
 function submitHighScore (event) {
   event.preventDefault();
   console.log ("submitted");
-  //localStorage.setItem("score", score)
+
   const usernameInput = document.getElementById("usernameInput");    
   const username = usernameInput.value.trim(); 
 
+  // if highscores already exists then parse it
+  if (localStorage.getItem('highscores') !== null) {
+    console.log(`i can see it`);
+  }
+
+  // push high scores object into highscroes array
   const highscoreObject = {
     username,
     score,
   };
 
-  const highscoreObjectString = JSON.stringify(highscoreObject);
-  localStorage.setItem("highscore", highscoreObjectString);
-  //localStorage.setItem("username", username);
+  // push high scores object into highscroes array
+  highscores.push(highscoreObject);
+
+  //stringify array
+  const highscoresString = JSON.stringify(highscores);
+
+  //add array to localt storage
+  localStorage.setItem("highscores", highscoresString);
     
     //const inputUsernameString = JSON.stringify(username);
     //localStorage.setItem("username", inputUsernameString);

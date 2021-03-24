@@ -11,11 +11,11 @@ const startTimer = () => {
   const timer = setInterval(timerTick, 1000);
   const timerTick = () => {
     timeLeft -= 1;
-    timerSpanElement.textContent = timeLeft;
+    document.getElementById(time).textContent = timeLeft;
 
     if (timeLeft < 0) {
       clearInterval(timer)
-      alert(time)
+      console.log(end)
     }
   }
 }
@@ -43,3 +43,16 @@ console.log (answerButton);
 // add ids
 
 const answerButtons = question1.answerChoices.every(constructAnswerButtons);
+
+
+console.log  (question1.correctAnswer())
+
+const button1 = document.getElementById("#1");
+const button2 = document.getElementById("#2");
+const button3 = document.getElementById("#3");
+const button4 = document.getElementById("#4");
+;
+button1.addEventListener("click", q1AnswerValidator);
+button2.addEventListener("click", q1AnswerValidator);
+button3.addEventListener("click", q1AnswerValidator);
+button4.addEventListener("click", q1AnswerValidator);
