@@ -1,6 +1,5 @@
 let timeLeft = 300;
 let score = 0;
-let highscores = [ ]
 const timerElement = document.getElementById("time");
 const scoreElement = document.getElementById("score");
 const startScreenDiv = document.getElementById("startScreenContent");
@@ -391,33 +390,34 @@ function endQuiz () {
 
 function submitHighScore (event) {
   event.preventDefault();
-  console.log ("submitted");
 
-  const usernameInput = document.getElementById("usernameInput");    
-  const username = usernameInput.value.trim(); 
+  console.log ("button works")
 
-  // if highscores already exists then parse it
-  if (localStorage.getItem('highscores') !== null) {
-    console.log(`i can see it`);
-  }
+  let usernameInput = document.getElementById("usernameInput");    
+  let username = usernameInput.value.trim(); 
 
-  // push high scores object into highscroes array
-  const highscoreObject = {
-    username,
-    score,
+  //create a highscore object
+  let highscoreObject = {
+  username,
+  score,
   };
 
-  // push high scores object into highscroes array
+  let highscores = [];
+
+  // if highscoresLS already exists then parse it
+  if (localStorage.getItem('highscoresLS') !== null) {
+    console.log ("I can see it!");
+    highscores = JSON.parse(localStorage.getItem('highscoresLS'));
+  };
+
+  // push high scores object into highscores array
   highscores.push(highscoreObject);
 
   //stringify array
-  const highscoresString = JSON.stringify(highscores);
+  let highscoresString = JSON.stringify(highscores);
 
-  //add array to localt storage
-  localStorage.setItem("highscores", highscoresString);
-    
-    //const inputUsernameString = JSON.stringify(username);
-    //localStorage.setItem("username", inputUsernameString);
+  //add array to local storage
+  localStorage.setItem("highscoresLS", highscoresString);
 }
 
 
