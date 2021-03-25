@@ -1,15 +1,9 @@
-
-
 function checkForHighScores () {
   if (localStorage.getItem('highscoresLS') !== null) {
-    console.log ("I can see it!");
     createTable ();
-    highscores = JSON.parse(localStorage.getItem('highscoresLS'));
-    sortedArray = highscores.sort(function (a, b) {
-      return parseFloat(b.score) - parseFloat(a.score);
-    });
-    console.log (sortedArray);
-    populateTable ();
+    const orderedScores = orderScores ();
+    orderedScores.every(populateTable)
+    populateTable (orderedScores);
   } else {
     createNullText ()
   };
@@ -17,27 +11,41 @@ function checkForHighScores () {
 
 function createTable () {
   let table = document.createElement('table');
-  table.setAttribute("class", "table")
+  table.setAttribute("class", "table");
+  table.setAttribute("id", "table")
   const tableDiv = document.getElementById("tableContainer");
   tableDiv.appendChild(table);
 
   row = table.insertRow();
+  row.insertCell().textContent = "Place"
   row.insertCell().textContent = "Username"
   row.insertCell().textContent = "Score"
 };
 
-function populateTable () {
+function orderScores () {
   highscores = JSON.parse(localStorage.getItem('highscoresLS'));
-  console.log (highscores);
+  orderedScores = highscores.sort(function (a, b) {
+    return parseFloat(b.score) - parseFloat(a.score);
+  });
+  return orderedScores;
+};
 
-}
+// this doesn't work
+function populateTable (index) {
+  let place = index=+1;
+  const table = document.getElementById("table");
+  row = table.insertRow();
+  row.insertCell().textContent = place;
+  row.insertCell().textContent = orderedScores[0].username;
+  row.insertCell().textContent = orderedScores[0].score;
+};
 
 function createNullText () {
   nullText = document.createElement("h2");
   nullText.textContent = "Sorry, there are no highscores yet";
   const tableDiv = document.getElementById("table");
   tableDiv.appendChild(nullText);
-}
+};
 
 
 //document.createElement(td)
