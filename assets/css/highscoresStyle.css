@@ -19,15 +19,9 @@ h3 {
   font-size: 2.5rem;
 }
 
-table {
-  font-size: 2.5rem;
-}
-
-table th {
-  padding: 10px;
-}
-
-.highscoresTable {
+.table {
   margin: auto;
+  font-size: 2.5rem;
+  padding: 1rem;
 }
 

@@ -3,7 +3,7 @@
 function checkForHighScores () {
   if (localStorage.getItem('highscoresLS') !== null) {
     console.log ("I can see it!");
-    //createTable ();
+    createTable ();
     //populateTable ();
     //highscores = JSON.parse(localStorage.getItem('highscoresLS'));
   } else {
@@ -12,15 +12,15 @@ function checkForHighScores () {
 };
 
 function createTable () {
-  one = "hello"
   let table = document.createElement('table');
-
-  const tableDiv = document.getElementById("table");
+  table.setAttribute("class", "table")
+  const tableDiv = document.getElementById("tableContainer");
   tableDiv.appendChild(table);
 
-  let row = table.insertRow();
-  let cell = row.insertCell();
-  cell.textContent = one;
+  row = table.insertRow();
+  row.insertCell().textContent = "Username"
+  row.insertCell().textContent = "Score"
+  //cell.textContent = one;
 };
 
 function createNullText () {
