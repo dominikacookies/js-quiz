@@ -32,7 +32,7 @@ function orderScores () {
 
 // this doesn't work
 function populateTable (index) {
-  let place = index=+1;
+  let place = index +1;
   const table = document.getElementById("table");
   row = table.insertRow();
   row.insertCell().textContent = place;
@@ -48,6 +48,10 @@ function createNullText () {
 };
 
 
+function clearStorage () {
+  localStorage.clear();
+}
+
 //document.createElement(td)
   //construct
 
@@ -62,4 +66,5 @@ function createNullText () {
 
 
 window.addEventListener("load", checkForHighScores())
+document.getElementById("clearBtn").addEventListener("click", clearStorage)
 

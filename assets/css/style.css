@@ -99,12 +99,72 @@ header h1, a {
 
 
 @media screen and (max-width: 768px) {
+  h1 {
+    font-size: 5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  button {
+    font-size: 2rem;
+  }
+  header h1, a {
+    font-size: 2rem;
+  }
+  .quizContent h1 {
+    font-size: 4rem;
+  }
 }
 
 @media screen and (max-width: 576px) {
+  h1 {
+    font-size: 4.5rem;
+  } 
+  h2 {
+    font-size: 1.8rem;
+  }
+  h3 {
+    font-size: 1.8rem;
+  }
+  button {
+    padding: 0.5rem;
+    margin-top: 0.8rem !important;
+    margin-bottom: 0.8rem !important;
+    font-size: 1.8rem;
+  }
+  header h1, a {
+    font-size: 1.8rem;
+  }
+  .quizContent h1 {
+    font-size: 3.5rem;
+  }
 }
 
 
 @media screen and (max-width: 375px) {
+  h1 {
+    font-size: 4rem;
+  } 
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  header h1, a {
+    font-size: 1.5rem;
+  }
+  .quizContent h1 {
+    font-size: 3rem;
+  }
+  button {
+    padding: 0.3rem;
+    margin-top: 0.6rem !important;
+    margin-bottom: 0.6rem !important;
+    font-size: 1.5rem;
+  }
 }
 
