@@ -4,8 +4,12 @@ function checkForHighScores () {
   if (localStorage.getItem('highscoresLS') !== null) {
     console.log ("I can see it!");
     createTable ();
-    //populateTable ();
-    //highscores = JSON.parse(localStorage.getItem('highscoresLS'));
+    highscores = JSON.parse(localStorage.getItem('highscoresLS'));
+    sortedArray = highscores.sort(function (a, b) {
+      return parseFloat(b.score) - parseFloat(a.score);
+    });
+    console.log (sortedArray);
+    populateTable ();
   } else {
     createNullText ()
   };
@@ -20,8 +24,13 @@ function createTable () {
   row = table.insertRow();
   row.insertCell().textContent = "Username"
   row.insertCell().textContent = "Score"
-  //cell.textContent = one;
 };
+
+function populateTable () {
+  highscores = JSON.parse(localStorage.getItem('highscoresLS'));
+  console.log (highscores);
+
+}
 
 function createNullText () {
   nullText = document.createElement("h2");
