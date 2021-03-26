@@ -391,8 +391,6 @@ function endQuiz () {
 function submitHighScore (event) {
   event.preventDefault();
 
-  console.log ("button works")
-
   let usernameInput = document.getElementById("usernameInput");    
   let username = usernameInput.value.trim(); 
 
@@ -418,6 +416,8 @@ function submitHighScore (event) {
 
   //add array to local storage
   localStorage.setItem("highscoresLS", highscoresString);
+
+  window.location.href = "./highscores.html"
 }
 
 

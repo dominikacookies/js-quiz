@@ -2,8 +2,7 @@ function checkForHighScores () {
   if (localStorage.getItem('highscoresLS') !== null) {
     createTable ();
     const orderedScores = orderScores ();
-    orderedScores.every(populateTable)
-    populateTable (orderedScores);
+    orderedScores.forEach(populateTable);
   } else {
     createNullText ()
   };
@@ -30,14 +29,13 @@ function orderScores () {
   return orderedScores;
 };
 
-// this doesn't work
-function populateTable (index) {
-  let place = index +1;
+function populateTable (item, index) {
+  let place = index + 1;
   const table = document.getElementById("table");
   row = table.insertRow();
   row.insertCell().textContent = place;
-  row.insertCell().textContent = orderedScores[0].username;
-  row.insertCell().textContent = orderedScores[0].score;
+  row.insertCell().textContent = item["username"];
+  row.insertCell().textContent = item["score"];
 };
 
 function createNullText () {
