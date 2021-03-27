@@ -41,28 +41,16 @@ function populateTable (item, index) {
 function createNullText () {
   nullText = document.createElement("h2");
   nullText.textContent = "Sorry, there are no highscores yet";
-  const tableDiv = document.getElementById("table");
+  const tableDiv = document.getElementById("tableContainer");
   tableDiv.appendChild(nullText);
 };
 
 
 function clearStorage () {
   localStorage.clear();
-}
+  location.reload();
+};
 
-//document.createElement(td)
-  //construct
-
-
-//retrieve high scores array
-
-// for every item in the array create <tr>
-
-// for every item in the array create td and populate with usernmae
-
-// for every item in the array create td and populate with score
-
-
-window.addEventListener("load", checkForHighScores())
+window.addEventListener("load", checkForHighScores)
 document.getElementById("clearBtn").addEventListener("click", clearStorage)
 

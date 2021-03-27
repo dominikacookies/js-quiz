@@ -394,30 +394,34 @@ function submitHighScore (event) {
   let usernameInput = document.getElementById("usernameInput");    
   let username = usernameInput.value.trim(); 
 
-  //create a highscore object
-  let highscoreObject = {
-  username,
-  score,
-  };
+  if (username === null ) {
+    alert("please enter a username")
+  } else {
+    //create a highscore object
+    let highscoreObject = {
+    username,
+    score,
+    };
 
-  let highscores = [];
+    let highscores = [];
 
-  // if highscoresLS already exists then parse it
-  if (localStorage.getItem('highscoresLS') !== null) {
-    console.log ("I can see it!");
-    highscores = JSON.parse(localStorage.getItem('highscoresLS'));
-  };
+    // if highscoresLS already exists then parse it
+    if (localStorage.getItem('highscoresLS') !== null) {
+      console.log ("I can see it!");
+      highscores = JSON.parse(localStorage.getItem('highscoresLS'));
+    };
+  
+    // push high scores object into highscores array
+    highscores.push(highscoreObject);
 
-  // push high scores object into highscores array
-  highscores.push(highscoreObject);
+    //stringify array
+    let highscoresString = JSON.stringify(highscores);
 
-  //stringify array
-  let highscoresString = JSON.stringify(highscores);
+    //add array to local storage
+    localStorage.setItem("highscoresLS", highscoresString);
 
-  //add array to local storage
-  localStorage.setItem("highscoresLS", highscoresString);
-
-  window.location.href = "./highscores.html"
+    window.location.href = "./highscores.html"
+  } 
 }
 
 
