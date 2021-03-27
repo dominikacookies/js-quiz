@@ -1,4 +1,4 @@
-let timeLeft = 300;
+let timeLeft = 90;
 let score = 0;
 const timerElement = document.getElementById("time");
 const scoreElement = document.getElementById("score");
@@ -394,7 +394,7 @@ function submitHighScore (event) {
   let usernameInput = document.getElementById("usernameInput");    
   let username = usernameInput.value.trim(); 
 
-  if (username === null ) {
+  if (username == "") {
     alert("please enter a username")
   } else {
     //create a highscore object

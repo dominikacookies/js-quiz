@@ -117,6 +117,10 @@ header h1, a {
   .quizContent h1 {
     font-size: 4rem;
   }
+  .usernameInput {
+    font-size: 2rem;
+    height: 2.8rem;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -140,6 +144,10 @@ header h1, a {
   }
   .quizContent h1 {
     font-size: 3.5rem;
+  }
+  .usernameInput {
+    font-size: 1.8rem;
+    height: 2.3rem;
   }
 }
 
@@ -165,6 +173,10 @@ header h1, a {
     margin-top: 0.6rem !important;
     margin-bottom: 0.6rem !important;
     font-size: 1.5rem;
+  }
+  .usernameInput {
+    font-size: 1.5rem;
+    height: 2rem;
   }
 }
 
