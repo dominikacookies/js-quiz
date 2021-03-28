@@ -7,10 +7,11 @@ body {
   background-image: linear-gradient(
     to left top, 
     #d16ba5, #ef7192, #ff7f7b, #ff9565, #ffaf53, #ffb94f, #ffc34c, #ffcd4a, #ffc64f, #ffbe55, #fdb85a, #fbb15f
-    );
+  );
   text-align: center;
 }
 
+/* Styles for html elements */
 h1 {
   font-size: 6rem;
 }
@@ -39,6 +40,7 @@ button {
   padding-right:1.7rem;
 }
 
+/* Media queries for 768px max screen size */
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 5rem;
@@ -57,6 +59,7 @@ button {
   }
 }
 
+/* Media queries for 576px max screen size */
 @media screen and (max-width: 576px) {
   h1 {
     font-size: 4.5rem;
@@ -78,7 +81,7 @@ button {
   }
 }
 
-
+/* Media queries for 375px max screen size */
 @media screen and (max-width: 375px) {
   h1 {
     font-size: 4rem;

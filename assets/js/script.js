@@ -10,7 +10,7 @@ const question1 = {
   answerChoices: ["Curly brackets", "Parentheses", "Angle brackets", "Square brackets"],
   correctAnswer: function () {
     return this.answerChoices[3]
-  }
+  },
 };
 
 const question2 = {
@@ -18,7 +18,7 @@ const question2 = {
   answerChoices: ["function name () {}", "function name {} ()", "name function {} ()", "name function ()  {}"],
   correctAnswer: function () {
     return this.answerChoices[0]
-  }
+  },
 };
 
 const question3 = {
@@ -26,7 +26,7 @@ const question3 = {
   answerChoices: ["Update its name", "Turn it into an array", "Turn it into a string", "Nothing"],
   correctAnswer: function () {
     return this.answerChoices[2]
-  }
+  },
 };
 
 const question4 = {
@@ -34,7 +34,7 @@ const question4 = {
   answerChoices: ["createElement", "appendChild", "setAttribute", "getElementById"],
   correctAnswer: function () {
     return this.answerChoices[2]
-  }
+  },
 };
 
 const question5 = {
@@ -42,7 +42,7 @@ const question5 = {
   answerChoices: ["string", "none", "boolean", "number"],
   correctAnswer: function () {
     return this.answerChoices[1]
-  }
+  },
 };
 
 //Construction of the quiz questions screen
@@ -81,7 +81,7 @@ const constructQuizContentDiv = () => {
   quizContentDiv.appendChild(button4);
   
   return quizContentDiv;
-}
+};
 
 //Construction of game over screen
 const constructGameEndDiv = () => {
@@ -119,17 +119,18 @@ const constructGameEndDiv = () => {
   //create form submit button
   const submitButton = document.createElement("button");
   submitButton.setAttribute("id", "submitButton");
-  submitButton.textContent = "Submit"
+  submitButton.textContent = "Submit";
   //append under form div
   formDiv.appendChild(submitButton);
 
   return gameEndDiv;
-}
+};
+
 //Activation of countdown timer
 const startTimer = () => {
   //Populate the timer with the timeLeft variable
   timerElement.textContent = timeLeft;
-  //Deduct 1 from timeLeft everytime the interval passes
+  //Deduct 1 from timeLeft every time the interval passes
   const timerTick = () => {
     timeLeft -= 1;
     timerElement.textContent = timeLeft;
@@ -141,11 +142,11 @@ const startTimer = () => {
     }
   };
   const timer = setInterval(timerTick, 1000);
-}
+};
 
 function startQuiz () {
   //destruct startScreenContent div
-  startScreenDiv.remove()
+  startScreenDiv.remove();
   // create quiz content div
   const quizContentDivElement = constructQuizContentDiv ();
   // append the quiz content div to the html main
@@ -154,7 +155,7 @@ function startQuiz () {
   startTimer ();
   // proceed to validate user answers
   q1Logic ();
-}
+};
 
 // validate user answers to question 1
 function q1Logic () {
@@ -186,7 +187,7 @@ function q1Logic () {
       // wait 0.5 secs and move onto the next question
       setTimeout(() => {q2Logic()}, 500);
     }
-  }
+  };
   // add event listeners to answer buttons
   button1 = document.getElementById("#1");
   button1.addEventListener("click", q1AnswerValidator);
@@ -196,7 +197,7 @@ function q1Logic () {
   button3.addEventListener("click", q1AnswerValidator);
   button4 = document.getElementById("#4");
   button4.addEventListener("click", q1AnswerValidator); 
-}
+};
 
 
 // validate user answers to question 2
@@ -232,7 +233,7 @@ function q2Logic () {
   button2.addEventListener("click", q2AnswerValidator);
   button3.addEventListener("click", q2AnswerValidator);
   button4.addEventListener("click", q2AnswerValidator);
-}
+};
 
 // populate quiz content elements with question 2 information
 function populateQ2info () {
@@ -241,7 +242,7 @@ function populateQ2info () {
   button2.textContent = question2.answerChoices[1];
   button3.textContent = question2.answerChoices[2];
   button4.textContent = question2.answerChoices[3];
-}
+};
 
 
 // validate user answers to question 3
@@ -276,7 +277,7 @@ function q3Logic () {
   button2.addEventListener("click", q3AnswerValidator);
   button3.addEventListener("click", q3AnswerValidator);
   button4.addEventListener("click", q3AnswerValidator);
-}
+};
 
 // populate quiz content elements with question 3 information
 function populateQ3info () {
@@ -285,7 +286,7 @@ function populateQ3info () {
   button2.textContent = question3.answerChoices[1];
   button3.textContent = question3.answerChoices[2];
   button4.textContent = question3.answerChoices[3];
-}
+};
 
 
 // validate user answers to question 4
@@ -320,7 +321,7 @@ function q4Logic () {
   button2.addEventListener("click", q4AnswerValidator);
   button3.addEventListener("click", q4AnswerValidator);
   button4.addEventListener("click", q4AnswerValidator);
-}
+};
 
 // populate quiz content elements with question 4 information
 function populateQ4info () {
@@ -329,7 +330,7 @@ function populateQ4info () {
   button2.textContent = question4.answerChoices[1];
   button3.textContent = question4.answerChoices[2];
   button4.textContent = question4.answerChoices[3];
-}
+};
 
 
 // validate user answers to question 5
@@ -364,7 +365,7 @@ function q5Logic () {
   button2.addEventListener("click", q5AnswerValidator);
   button3.addEventListener("click", q5AnswerValidator);
   button4.addEventListener("click", q5AnswerValidator);
-}
+};
 
 // populate quiz content elements with question 5 information
 function populateQ5info () {
@@ -379,15 +380,13 @@ function endQuiz () {
   // destruct quizContentDiv
   quizContentDivElement = document.getElementById("quizContent");
   quizContentDivElement.remove()
-  //construct gameEndDiv
+  // construct gameEndDiv
   const gameEndDivElement = constructGameEndDiv ();
-  //append gameEndDiv to container
   document.getElementById("container").appendChild(gameEndDivElement);
-  //submit score
   document.getElementById("submitButton").addEventListener("click", submitHighScore);
+};
 
-}
-
+// store highscore in local storage
 function submitHighScore (event) {
   event.preventDefault();
 
@@ -395,9 +394,9 @@ function submitHighScore (event) {
   let username = usernameInput.value.trim(); 
 
   if (username == "") {
-    alert("please enter a username")
+    alert("Please enter a username")
   } else {
-    //create a highscore object
+    //store score and username in an object
     let highscoreObject = {
     username,
     score,
@@ -407,24 +406,21 @@ function submitHighScore (event) {
 
     // if highscoresLS already exists then parse it
     if (localStorage.getItem('highscoresLS') !== null) {
-      console.log ("I can see it!");
       highscores = JSON.parse(localStorage.getItem('highscoresLS'));
     };
   
-    // push high scores object into highscores array
+    // push highscores object into highscores array
     highscores.push(highscoreObject);
 
-    //stringify array
+    //stringify the highscores array
     let highscoresString = JSON.stringify(highscores);
 
-    //add array to local storage
+    //add the array to local storage
     localStorage.setItem("highscoresLS", highscoresString);
 
     window.location.href = "./highscores.html"
   } 
-}
-
-
+};
 
 document.getElementById("startButton").addEventListener("click", startQuiz);
 

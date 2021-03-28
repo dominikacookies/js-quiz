@@ -6,10 +6,11 @@ body {
   background-image: linear-gradient(
     to left top, 
     #d16ba5, #ef7192, #ff7f7b, #ff9565, #ffaf53, #ffb94f, #ffc34c, #ffcd4a, #ffc64f, #ffbe55, #fdb85a, #fbb15f
-    );
+  );
   text-align: center;
 }
 
+/* Styles for html elements */
 h1 {
   font-size: 6rem;
 }
@@ -19,7 +20,7 @@ h2 {
 }
 
 h3 {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
 }
 
 a {
@@ -34,6 +35,7 @@ button {
   border: none;
 }
 
+/* Body > Header */
 header {
   display: flex;
   justify-content: space-evenly;
@@ -44,6 +46,8 @@ header {
 header h1, a {
   font-size: 2.5rem;
 }
+
+/* Body > Main > Start Screen */
 
 .container {
   position: relative;
@@ -57,6 +61,7 @@ header h1, a {
   transform: translate(-50%,-50%);
 }
 
+/* Body > Main > Quiz Screen */
 .quizContent {
   position: absolute;
   top: 45%;
@@ -73,13 +78,6 @@ header h1, a {
   margin: auto;
 }
 
-.gameEnd {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
-
 .button--correct {
   background-color: rgb(131, 247, 131);
   color: white;
@@ -90,14 +88,20 @@ header h1, a {
   color: white;
 }
 
+/* Body > Main > Game End Screen */
+.gameEnd {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 
 .usernameInput {
   font-size: 2.5rem;
   height: 3.5rem;
 }
 
-
-
+/* Media queries for 768px max screen size */
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 5rem;
@@ -123,6 +127,7 @@ header h1, a {
   }
 }
 
+/* Media queries for 576px max screen size */
 @media screen and (max-width: 576px) {
   h1 {
     font-size: 4.5rem;
@@ -151,7 +156,7 @@ header h1, a {
   }
 }
 
-
+/* Media queries for 375px max screen size */
 @media screen and (max-width: 375px) {
   h1 {
     font-size: 4rem;

@@ -1,3 +1,4 @@
+// determine if any highscores have been saved in loca lstorage
 function checkForHighScores () {
   if (localStorage.getItem('highscoresLS') !== null) {
     createTable ();
@@ -8,6 +9,7 @@ function checkForHighScores () {
   };
 };
 
+// create a table to present highscores in
 function createTable () {
   let table = document.createElement('table');
   table.setAttribute("class", "table");
@@ -16,11 +18,12 @@ function createTable () {
   tableDiv.appendChild(table);
 
   row = table.insertRow();
-  row.insertCell().textContent = "Place"
-  row.insertCell().textContent = "Username"
-  row.insertCell().textContent = "Score"
+  row.insertCell().textContent = "Place";
+  row.insertCell().textContent = "Username";
+  row.insertCell().textContent = "Score";
 };
 
+//order highscores in  a descending order
 function orderScores () {
   highscores = JSON.parse(localStorage.getItem('highscoresLS'));
   orderedScores = highscores.sort(function (a, b) {
@@ -29,6 +32,7 @@ function orderScores () {
   return orderedScores;
 };
 
+//populate the table with highscores
 function populateTable (item, index) {
   let place = index + 1;
   const table = document.getElementById("table");
@@ -38,6 +42,7 @@ function populateTable (item, index) {
   row.insertCell().textContent = item["score"];
 };
 
+//create text to notify user that no highscores have been recorded
 function createNullText () {
   nullText = document.createElement("h2");
   nullText.textContent = "Sorry, there are no highscores yet";
@@ -45,7 +50,7 @@ function createNullText () {
   tableDiv.appendChild(nullText);
 };
 
-
+//clear local storage
 function clearStorage () {
   localStorage.clear();
   location.reload();
