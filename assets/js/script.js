@@ -374,13 +374,13 @@ function endQuiz () {
   quizContentDivElement = document.getElementById("quizContent");
   quizContentDivElement.remove()
   // construct gameEndDiv
-  const gameEndDivElement = constructGameEndDiv ();
+  const gameEndDivElement = constructGameEndDiv();
   document.getElementById("container").appendChild(gameEndDivElement);
-  document.getElementById("submitButton").addEventListener("click", submitHighScore);
+  document.getElementById("submitButton").addEventListener("click", submitHighscore);
 };
 
 // store highscore in local storage
-function submitHighScore (event) {
+function submitHighscore (event) {
   event.preventDefault();
 
   let usernameInput = document.getElementById("usernameInput");    
@@ -395,19 +395,17 @@ function submitHighScore (event) {
     score,
     };
 
-    let highscores = [];
+    let highscoresArray = [];
 
-    // if highscoresLS already exists then parse it
+    // if highscores have already been logged in local then parse them
     if (localStorage.getItem('highscoresLS') !== null) {
-      highscores = JSON.parse(localStorage.getItem('highscoresLS'));
+      highscoresArray = JSON.parse(localStorage.getItem('highscoresLS'));
     };
   
     // push highscores object into highscores array
-    highscores.push(highscoreObject);
-
+    highscoresArray.push(highscoreObject);
     //stringify the highscores array
-    let highscoresString = JSON.stringify(highscores);
-
+    let highscoresString = JSON.stringify(highscoresArray);
     //add the array to local storage
     localStorage.setItem("highscoresLS", highscoresString);
 
