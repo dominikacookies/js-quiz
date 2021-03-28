@@ -93,34 +93,29 @@ const constructGameEndDiv = () => {
   // create h1
   const gameEndText = document.createElement("h1");
   gameEndText.textContent = "Game Over";
-  // append under content div
   gameEndDiv.appendChild(gameEndText);
 
   // create h2
   const highScoreSubmissionIntructions = document.createElement("h2");
   highScoreSubmissionIntructions.textContent = "Insert your username below to add your score to the highscores board.";
-  //append under content div
   gameEndDiv.appendChild(highScoreSubmissionIntructions);
 
   //create form div
   const formDiv = document.createElement("div");
   gameEndDiv.setAttribute("class", "form");
   gameEndDiv.setAttribute("id", "form");
-  //append under content div
   gameEndDiv.appendChild(formDiv);
 
   //create form input
   const usernameInput = document.createElement("input");
   usernameInput.setAttribute("class", "usernameInput");
   usernameInput.setAttribute("id", "usernameInput");
-  //append under form div
   formDiv.appendChild(usernameInput);
 
   //create form submit button
   const submitButton = document.createElement("button");
   submitButton.setAttribute("id", "submitButton");
   submitButton.textContent = "Submit";
-  //append under form div
   formDiv.appendChild(submitButton);
 
   return gameEndDiv;
@@ -128,7 +123,6 @@ const constructGameEndDiv = () => {
 
 //Activation of countdown timer
 const startTimer = () => {
-  //Populate the timer with the timeLeft variable
   timerElement.textContent = timeLeft;
   //Deduct 1 from timeLeft every time the interval passes
   const timerTick = () => {
@@ -147,13 +141,12 @@ const startTimer = () => {
 function startQuiz () {
   //destruct startScreenContent div
   startScreenDiv.remove();
-  // create quiz content div
+  //create quiz content div
   const quizContentDivElement = constructQuizContentDiv ();
-  // append the quiz content div to the html main
   document.getElementById("container").appendChild(quizContentDivElement);
-  // start timer
+  //start timer
   startTimer ();
-  // proceed to validate user answers
+  //proceed to validate user answers
   q1Logic ();
 };
 
