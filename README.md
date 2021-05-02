@@ -4,8 +4,10 @@
 
 You can view this project on GitHub pages by clicking [here](https://dominikacookies.github.io/js-quiz/).
 
-## Description
+## License 
+MIT License
 
+## Description
 This project is an interactive quiz which allows users to test their javascript knowledge and store scores to monitor progress over time.
 
 ### Key functionalities
@@ -17,8 +19,15 @@ This project is an interactive quiz which allows users to test their javascript 
 - at the end of the game, the user is able to save their username and score to a highscores page
 - the user can access the highscores page at any time by clicking the 'Highscores' link in the header
 
-## Screenshots of App
+## Technologies used
+- HTML5
+- CSS
+- Javascript
+- jQuery
+- Local storage
+- ES6 Functions
 
+## Screenshots of App
 ### Start Screen
 ![image](.assets/../assets/screenshots/startscreen.png) 
 
