@@ -1,11 +1,7 @@
 # Javascript Quiz
 
 ## Project Link
-
 You can view this project on GitHub pages by clicking [here](https://dominikacookies.github.io/js-quiz/).
-
-## License 
-MIT License
 
 ## Description
 This project is an interactive quiz which allows users to test their javascript knowledge and store scores to monitor progress over time.
@@ -26,6 +22,9 @@ This project is an interactive quiz which allows users to test their javascript 
 - jQuery
 - Local storage
 - ES6 Functions
+
+## License 
+MIT License
 
 ## Screenshots of App
 ### Start Screen
