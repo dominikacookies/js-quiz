@@ -19,7 +19,6 @@ This project is an interactive quiz which allows users to test their javascript 
 - HTML5
 - CSS
 - Javascript
-- jQuery
 - Local storage
 - ES6 Functions
 
